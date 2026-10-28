@@ -1,0 +1,6 @@
+{
+  "name": "CreateX AI",
+  "description": "AI Video Editor & Creative Studio with multi-track timeline, AI voiceover, script generator, subtitle styles and video FX",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
