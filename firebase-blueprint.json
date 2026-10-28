@@ -1,0 +1,105 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile document",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account creation timestamp"
+        },
+        "lastActive": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last activity timestamp"
+        }
+      },
+      "required": ["email", "displayName", "createdAt", "lastActive"]
+    },
+    "VideoProject": {
+      "title": "VideoProject",
+      "description": "Saved video project metadata and configuration",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase user ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Project title"
+        },
+        "aspectRatio": {
+          "type": "string",
+          "description": "Selected aspect ratio preset string"
+        },
+        "resolution": {
+          "type": "string",
+          "description": "Export resolution (e.g. 720p, 1080p, 4k)"
+        },
+        "fps": {
+          "type": "integer",
+          "description": "Video frame rate per second"
+        },
+        "clipsCount": {
+          "type": "integer",
+          "description": "Number of media clips included"
+        },
+        "durationSeconds": {
+          "type": "number",
+          "description": "Total duration in seconds"
+        },
+        "thumbnailUri": {
+          "type": "string",
+          "description": "Thumbnail preview URI"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last updated timestamp (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "name",
+        "aspectRatio",
+        "resolution",
+        "fps",
+        "clipsCount",
+        "durationSeconds",
+        "thumbnailUri",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "User profile document indexed by Auth UID"
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": {
+        "$ref": "#/entities/VideoProject"
+      },
+      "description": "User video projects subcollection"
+    }
+  }
+}
